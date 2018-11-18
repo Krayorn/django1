@@ -9,20 +9,3 @@
         </div>
     </nav>
 </div>
-<form action="{% url 'elementaryCellularAutomata:index'%}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
-
-{% if rule_number  %}
-    <div>Schema for rule {{rule_number}} </div>
-{% endif %}
-
-
-<div>
-    <pre>
-{{ string }}
-    </pre>
-</div>
-

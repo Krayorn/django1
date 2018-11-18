@@ -1,4 +1,15 @@
-<form action="{% url 'pasteAsMarkdown:create'%}" method="post">
+<div>
+    <nav>
+        <div>
+            <a href="/">Index</a>
+            <ul>
+                <li><a href="{% url 'elementaryCellularAutomata:index'%}">Elementary Cellular Automata</a></li>
+                <li><a href="{% url 'pasteAsMarkdown:index' %}">Paste As Markdown</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<form action="{% url 'pasteAsMarkdown:index'%}" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">

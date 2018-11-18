@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django1.apps.Django1Config',
     'elementaryCellularAutomata.apps.ElementarycellularautomataConfig',
     'pasteAsMarkdown.apps.PasteasmarkdownConfig',
     'django.contrib.admin',
