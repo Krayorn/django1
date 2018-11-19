@@ -1,8 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.forms import ModelForm
 from django.shortcuts import render
+from django.core.exceptions import ValidationError
 from pasteAsMarkdown.models import Markdown
 from django.views.generic.edit import FormView
+import random, string
+
 
 # Create your views here.
 
@@ -17,7 +20,17 @@ class PasteAsMarkdownIndex(FormView):
 
     def post(self, request, *args, **kwargs):
         if request.POST['markdownText']:
-            t = Markdown(markdownText=request.POST['markdownText'], url=request.POST['url'])
+            if request.POST['url']:
+                if Markdown.objects.filter(url=request.POST['url']).exists():
+                    return render(request, 'pasteAsMarkdown/form.html', { 'error': 'Url already used', 'form': MarkdownForm })
+                t = Markdown(markdownText=request.POST['markdownText'], url=request.POST['url'])
+            else:
+                generatedUri = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+                while Markdown.objects.filter(url=generatedUri).exists():
+                    generatedUri = ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+                    pass
+                t = Markdown(markdownText=request.POST['markdownText'], url=generatedUri)
+
             t.save()
             return HttpResponseRedirect(f"{t.url}")
 

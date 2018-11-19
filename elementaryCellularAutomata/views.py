@@ -70,7 +70,7 @@ class ElementaryCellularAutomata(FormView):
     def post(self, request, *args, **kwargs):
         rule_number = int(request.POST['rule_number'])
         if not 0 <= rule_number <= 256:
-            raise ValidationError("parameter rule number should have a value between 0 and 256")
+            rule_number = 90
 
         value = Wolf(rule_number)
         return render(request, 'elementaryCellularAutomata/form.html', {
