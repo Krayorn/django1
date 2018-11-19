@@ -21,5 +21,6 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('admin/', admin.site.urls),
     path('elementaryCellularAutomata/', include('elementaryCellularAutomata.urls')),
-    path('pasteAsMarkdown/', include('pasteAsMarkdown.urls'))
+    path('pasteAsMarkdown/', include('pasteAsMarkdown.urls')),
+    path('hashid/', include('hashid.urls')),
 ]

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django1.apps.Django1Config',
     'elementaryCellularAutomata.apps.ElementarycellularautomataConfig',
     'pasteAsMarkdown.apps.PasteasmarkdownConfig',
+    'hashid.apps.HashidConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

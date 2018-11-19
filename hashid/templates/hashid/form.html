@@ -1,0 +1,25 @@
+{% extends 'layout/nav.html' %}
+
+{% block content %}
+    <div>
+        Enter in the following field the hash we should try to identify !
+        <form action="{% url 'hashid:index'%}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+    {% if array %}
+        <p>Your hash : {{ hash }} could be one of the following algo: </p>
+        {% for algo in array %}
+            {{algo.name}}<br />
+        {% endfor %}
+    {% else %}
+        {% if hash %}
+            Sorry we couldn't find anything for your hash
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
