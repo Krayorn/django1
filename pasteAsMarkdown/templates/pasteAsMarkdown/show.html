@@ -1,16 +1,9 @@
-<div>
-    <nav>
-        <div>
-            <a href="/">Index</a>
-            <ul>
-                <li><a href="{% url 'elementaryCellularAutomata:index'%}">Elementary Cellular Automata</a></li>
-                <li><a href="{% url 'pasteAsMarkdown:index' %}">Paste As Markdown</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
+{% extends 'layout/nav.html' %}
 
-{% load md2 %}
-<div>
-    {{text|markdown}}
-</div>
+{% block content %}
+    {% load md2 %}
+    <div>
+        {{text|markdown}}
+    </div>
+{% endblock %}
+
